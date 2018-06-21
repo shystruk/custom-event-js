@@ -27,7 +27,9 @@ CustomEvent.OFF('SHOW_NAME')
 
 ## API
 - **ON(eventName, callback)** add an appropriate event listener. When event gets fired callback will be called with **detail** argument
+
 - **DISPATCH(eventName, detail)** dispatch event to all event listeners
+
 - **OFF(eventName)** remove event listener
 
 
