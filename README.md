@@ -27,11 +27,10 @@ CustomEvent.OFF('SHOW_NAME')
 
 ## API
 - ON(eventName<string>, callback<function>) add an appropriate event listener. When event gets fired callback will be called with **detail** argument
-
 - DISPATCH(eventName<string>, detail<object>) dispatch event to all event listeners
-
 - OFF(eventName<string>) remove event listener
-    
+
+
 
 
 ## Contributing
