@@ -3,7 +3,7 @@
 
 > The Custom Event Dispatcher provides the ability to communicate inside your application by dispatching events and listening to them. It also runs polyfill for Internet Explorer 9 and higher. What is the CustomEvent interface you may find [here](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent). 
 
-## Getting Custom Event Dispatcher ##
+## Install ##
 #### npm
 `npm install --save custom-event-js`
 
