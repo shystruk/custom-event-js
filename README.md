@@ -15,8 +15,8 @@
 import CustomEvent from 'custom-event-js'
 
 // Listen event 'SHOW_NAME'
-CustomEvent.ON('SHOW_NAME', (detail) => {
-    console.log(detail) // { name: 'GitHub' }
+CustomEvent.ON('SHOW_NAME', (data) => {
+    console.log(data.detail) // { name: 'GitHub' }
 })
 
 // Dispatch event 'SHOW_NAME' with data
