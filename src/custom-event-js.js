@@ -1,15 +1,15 @@
 _CustomEventPolyfill();
 
-const TARGET = document;
-const EVENTS = {};
+var TARGET = document;
+var EVENTS = {};
 
 /**
  * @param {String} eventName 
  * @param {Object} detail
  */
 function _dispatchEvent(eventName, detail) {
-  let event = new CustomEvent(eventName, {
-    detail
+  var event = new CustomEvent(eventName, {
+    detail: detail
   });
 
   TARGET.dispatchEvent(event);
@@ -38,7 +38,7 @@ module.exports = {
    * @param {String} eventName 
    * @param {Function} callback 
    */
-  ON: (eventName, callback) => {
+  ON: function(eventName, callback) {
     EVENTS[eventName] = callback;
     TARGET.addEventListener(eventName, callback);
   },
@@ -46,16 +46,16 @@ module.exports = {
   /**
    * @param {String} eventName 
    */
-  OFF: (eventName) => {
+  OFF: function(eventName) {
     TARGET.removeEventListener(eventName, EVENTS[eventName]);
     delete EVENTS[eventName];
   },
 
   /**
    * @param {String} eventName 
-   * @param {Object} detail 
+   * @param {Object} detail
    */
-  DISPATCH: (eventName, detail = null) => {
-    _dispatchEvent(eventName, detail);
+  DISPATCH: function(eventName, detail) {
+    _dispatchEvent(eventName, detail || null);
   }
 }
