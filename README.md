@@ -17,23 +17,23 @@ The Custom Event Dispatcher provides the ability to communicate inside your appl
 import CustomEvent from 'custom-event-js'
 
 // Listen event 'SHOW_NAME'
-CustomEvent.ON('SHOW_NAME', (data) => {
+CustomEvent.on('SHOW_NAME', (data) => {
     console.log(data.detail) // { name: 'GitHub' }
 })
 
 // Dispatch event 'SHOW_NAME' with data
-CustomEvent.DISPATCH('SHOW_NAME', { name: 'GitHub' })
+CustomEvent.dispatch('SHOW_NAME', { name: 'GitHub' })
 
 // Remove event listener
-CustomEvent.OFF('SHOW_NAME')
+CustomEvent.off('SHOW_NAME')
 ```
 
 ## API
-- **ON(eventName, callback)** add an appropriate event listener. When event gets fired callback will be called with **detail** argument
+- **on(eventName, callback)** add an appropriate event listener. When event gets fired callback will be called with **detail** argument
 
-- **DISPATCH(eventName, detail)** dispatch event to all event listeners
+- **dispatch(eventName, detail)** dispatch event to all event listeners
 
-- **OFF(eventName)** remove event listener
+- **off(eventName)** remove event listener
 
 
 ## Contributing
