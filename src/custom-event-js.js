@@ -38,7 +38,7 @@ module.exports = {
    * @param {String} eventName 
    * @param {Function} callback 
    */
-  ON: function(eventName, callback) {
+  on: function(eventName, callback) {
     EVENTS[eventName] = callback;
     TARGET.addEventListener(eventName, callback);
   },
@@ -46,7 +46,7 @@ module.exports = {
   /**
    * @param {String} eventName 
    */
-  OFF: function(eventName) {
+  off: function(eventName) {
     TARGET.removeEventListener(eventName, EVENTS[eventName]);
     delete EVENTS[eventName];
   },
@@ -55,7 +55,7 @@ module.exports = {
    * @param {String} eventName 
    * @param {Object} detail
    */
-  DISPATCH: function(eventName, detail) {
+  dispatch: function(eventName, detail) {
     _dispatchEvent(eventName, detail || null);
   }
 }
