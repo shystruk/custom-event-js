@@ -1,6 +1,6 @@
 {
   "name": "custom-event-js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "description": "Custom Event Dispatcher",
   "main": "./src/custom-event-js.js",
