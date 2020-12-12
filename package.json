@@ -1,27 +1,27 @@
 {
-  "name": "custom-event-js",
-  "version": "1.0.1",
-  "license": "MIT",
-  "description": "Custom Event Dispatcher",
-  "main": "./src/custom-event-js.js",
-  "directories": {
-    "src": "src"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/shystruk/custom-event-js"
-  },
-  "keywords": [
-    "Custom Event",
-    "custom-event",
-    "events",
-    "dispatcher",
-    "event dispatcher",
-    "event bus"
-  ],
-  "author": {
-    "name": "Vasyl Stokolosa",
-    "email": "v.stokol@gmail.com",
-    "url": "https://github.com/shystruk"
-  }
+	"name": "custom-event-js",
+	"version": "1.0.1",
+	"license": "MIT",
+	"description": "Custom Event Dispatcher",
+	"main": "./src/custom-event-js.js",
+	"directories": {
+		"src": "src"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/shystruk/custom-event-js"
+	},
+	"keywords": [
+		"Custom Event",
+		"custom-event",
+		"events",
+		"dispatcher",
+		"event dispatcher",
+		"event bus"
+	],
+	"author": {
+		"name": "Vasyl Stokolosa",
+		"email": "v.stokol@gmail.com",
+		"url": "https://github.com/shystruk"
+	}
 }
