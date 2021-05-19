@@ -3,7 +3,7 @@
 	"version": "1.0.2",
 	"license": "MIT",
 	"description": "Custom Event Dispatcher",
-	"main": "./src/custom-event-js.js",
+	"main": "./src/custom-event.js",
 	"directories": {
 		"src": "src"
 	},
