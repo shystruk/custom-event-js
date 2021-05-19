@@ -1,14 +1,15 @@
+// Internet Explorer 9 and higher
 _CustomEventPolyfill();
 
-var TARGET = document;
-var EVENTS = {};
+const TARGET = document;
+const EVENTS = {};
 
 /**
  * @param {String} eventName
  * @param {Object} detail
  */
 function _dispatchEvent(eventName, detail) {
-	var event = new CustomEvent(eventName, {
+	const event = new CustomEvent(eventName, {
 		detail: detail
 	});
 
@@ -21,7 +22,7 @@ function _CustomEventPolyfill() {
 	}
 
 	function CustomEvent(event, params) {
-		var evt = document.createEvent('CustomEvent');
+		const evt = document.createEvent('CustomEvent');
 
 		params = params || { bubbles: false, cancelable: false, detail: undefined };
 		evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
@@ -39,7 +40,14 @@ module.exports = {
 	 * @param {Function} callback
 	 */
 	on: function (eventName, callback) {
-		EVENTS[eventName] = callback;
+		if (EVENTS[eventName]) {
+			EVENTS[eventName].callbacks.push(callback);
+		} else {
+			EVENTS[eventName] = {
+				callbacks: [callback]
+			};
+		}
+
 		TARGET.addEventListener(eventName, callback);
 	},
 
@@ -47,7 +55,14 @@ module.exports = {
 	 * @param {String} eventName
 	 */
 	off: function (eventName) {
-		TARGET.removeEventListener(eventName, EVENTS[eventName]);
+		if (!EVENTS[eventName]) {
+			return;
+		}
+
+		EVENTS[eventName].callbacks.forEach(callback => {
+			TARGET.removeEventListener(eventName, callback);
+		});
+
 		delete EVENTS[eventName];
 	},
 
