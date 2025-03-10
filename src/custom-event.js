@@ -54,16 +54,23 @@ module.exports = {
 	/**
 	 * @param {String} eventName
 	 */
-	off: function (eventName) {
+	off: function (eventName, callbackToRemove) {
 		if (!EVENTS[eventName]) {
 			return;
 		}
 
-		EVENTS[eventName].callbacks.forEach(callback => {
+		EVENTS[eventName].callbacks.filter(callback => !callbackToRemove || callback === callbackToRemove).forEach(callback => {
 			TARGET.removeEventListener(eventName, callback);
 		});
+		if (callbackToRemove) {
+			EVENTS[eventName].callbacks = EVENTS[eventName].callbacks.filter(callback => callback !== callbackToRemove);
+			if (EVENTS[eventName].callbacks.length === 0) {
+				delete EVENTS[eventName];
+			}
+		} else {
+			delete EVENTS[eventName];
+		}
 
-		delete EVENTS[eventName];
 	},
 
 	/**

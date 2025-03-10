@@ -27,6 +27,10 @@ CustomEvent.dispatch('SHOW_NAME', { name: 'GitHub' })
 
 // Remove event listener
 CustomEvent.off('SHOW_NAME')
+
+or
+
+CustomEvent.off('SHOW_NAME', callback)
 ```
 
 ## API
@@ -34,7 +38,9 @@ CustomEvent.off('SHOW_NAME')
 
 - **dispatch(eventName, detail)** dispatch event to all event listeners
 
-- **off(eventName)** remove event listener
+- **off(eventName)** remove all event listeners for the event
+
+- **off(eventName, callback)** remove a specific event listener for the event
 
 
 ## Contributing
