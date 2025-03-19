@@ -2,9 +2,9 @@
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php) [![npm version](https://badge.fury.io/js/custom-event-js.svg)](https://badge.fury.io/js/custom-event-js)
 [![Known Vulnerabilities](https://snyk.io/test/github/shystruk/custom-event-js/badge.svg?targetFile=package.json)](https://snyk.io/test/github/shystruk/custom-event-js?targetFile=package.json)
 
-The Custom Event Dispatcher provides the ability to communicate inside your application by dispatching events and listening to them. It also runs polyfill for Internet Explorer 9 and higher. What is the CustomEvent interface you may find [here](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent). 
+The Custom Event Dispatcher provides the ability to communicate inside your application by dispatching events and listening to them. What is the CustomEvent interface you may find [here](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent).
 
-> **Custom Event Dispatcher works in all popular browsers, including Internet Explorer 9 and higher.**
+> **Custom Event Dispatcher works in all popular browsers**
 
 ## Install ##
 #### npm
@@ -28,8 +28,7 @@ CustomEvent.dispatch('SHOW_NAME', { name: 'GitHub' })
 // Remove event listener
 CustomEvent.off('SHOW_NAME')
 
-or
-
+// Remove a specific callback from event listener
 CustomEvent.off('SHOW_NAME', callback)
 ```
 

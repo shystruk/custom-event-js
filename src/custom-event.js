@@ -1,6 +1,3 @@
-// Internet Explorer 9 and higher
-_CustomEventPolyfill();
-
 const TARGET = document;
 const EVENTS = {};
 
@@ -14,24 +11,6 @@ function _dispatchEvent(eventName, detail) {
 	});
 
 	TARGET.dispatchEvent(event);
-}
-
-function _CustomEventPolyfill() {
-	if (typeof window.CustomEvent === 'function') {
-		return;
-	}
-
-	function CustomEvent(event, params) {
-		const evt = document.createEvent('CustomEvent');
-
-		params = params || { bubbles: false, cancelable: false, detail: undefined };
-		evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
-
-		return evt;
-	}
-
-	CustomEvent.prototype = window.Event.prototype;
-	window.CustomEvent = CustomEvent;
 }
 
 module.exports = {
@@ -53,24 +32,33 @@ module.exports = {
 
 	/**
 	 * @param {String} eventName
+	 * @param {Function} callback
 	 */
-	off: function (eventName, callbackToRemove) {
+	off: function (eventName, callback) {
 		if (!EVENTS[eventName]) {
 			return;
 		}
 
-		EVENTS[eventName].callbacks.filter(callback => !callbackToRemove || callback === callbackToRemove).forEach(callback => {
-			TARGET.removeEventListener(eventName, callback);
-		});
-		if (callbackToRemove) {
-			EVENTS[eventName].callbacks = EVENTS[eventName].callbacks.filter(callback => callback !== callbackToRemove);
-			if (EVENTS[eventName].callbacks.length === 0) {
+		const callbacks = EVENTS[eventName].callbacks;
+
+		if (callback) {
+			for (let i = callbacks.length - 1; i >= 0; i--) {
+				if (callbacks[i] === callback) {
+					TARGET.removeEventListener(eventName, callbacks[i]);
+					callbacks.splice(i, 1);
+				}
+			}
+
+			if (callbacks.length === 0) {
 				delete EVENTS[eventName];
 			}
 		} else {
+			callbacks.forEach(callback => {
+				TARGET.removeEventListener(eventName, callback);
+			});
+
 			delete EVENTS[eventName];
 		}
-
 	},
 
 	/**
